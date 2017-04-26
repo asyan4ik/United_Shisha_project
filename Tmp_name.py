@@ -4,15 +4,11 @@ import time
 from slackclient import SlackClient
 import google
 import requests
+from bot_configs import*        #импортируем настройки из bot_config
 
 def search(what):
     for url in google.search(what, lang='eng',stop=5):
         return (url)
-
-
-
-BOT_TOKEN = "xoxb-174808504294-MdlOsjlVt81k3rBSihVq41Br"
-CHANNEL_NAME = "test_chanel_for_bot"
 
 what = {
     'погода': "Погода Отличная, я ж загораю!",
