@@ -9,19 +9,19 @@ import datetime
 def search(what):
    for url in google.search(what, lang='ru',stop=5):
        return (url)
-    
 def what_time(what):
     now = datetime.datetime.now()
     moment = now.time()
     return (str(moment)[:8:])
 
 hello_list = ('привет','добрый день','здарова')
-time_list = ('который час','сколько время','время',)
+time_list = ('который час','сколько время','время')
 what_list = ('что такое','кто такой','где найти')
 
 Questions = {
     what_list : search,
-    hello_list: 'Приветствую!\n',
+    hello_list: "Приветствую! \n",  # Я умею еще кое что .\n Введи бот который час , сколько время, бот время и я покажу тебе время. \
+                                    # Еще я могу искать в Google (что такое, кто такой , где найти)",
     time_list: what_time
 
 }
@@ -37,11 +37,10 @@ if __name__ == '__main__':
        # читаем сообщения
        for slack_message in sc.rtm_read():
            message = slack_message.get("text")
-           test = 'бот'
            user = slack_message.get("user")
            if message == None or user == None:
                continue
-           elif test in message.lower().encode('utf-8'):
+           elif CHAT_BOT_NAME in message.lower().encode('utf-8'):
                for key,values in Questions.items():
                    for vars in key:
                        if vars in message.lower().encode('utf-8'):
